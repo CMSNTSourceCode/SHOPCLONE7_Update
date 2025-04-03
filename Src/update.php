@@ -16,9 +16,9 @@ if(in_array($_SERVER["REMOTE_ADDR"], $whitelist)) {
     exit("Localhost không thể sử dụng chức năng này");
 }
 if($CMSNT->site("status_update") == 1) {
-    if($config["version"] != curl_get_contents("http://api.cmsnt.co/version.php?version=SHOPCLONE7_ENCRYPTION", 3)) {
+    if($config["version"] != curl_get_contents("https://raw.githubusercontent.com/CMSNTSourceCode/SHOPCLONE7_Update/refs/heads/main/version.txt", 3)) {
         define("filename", "update_" . random("ABC123456789", 6) . ".zip");
-        define("serverfile", "http://api.cmsnt.co/d2gpclone7v89b85AAA24042024AAAZxvpoam29n2sj.zip");
+        define("serverfile", "http://github.com/CMSNTSourceCode/SHOPCLONE7_Update/raw/refs/heads/main/update.zip");
         file_put_contents(filename, curl_get_contents(serverfile, 30));
         $file = filename;
         $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
