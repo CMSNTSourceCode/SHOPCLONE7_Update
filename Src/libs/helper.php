@@ -115,8 +115,10 @@ function log_admin_request()
         $params = $_POST;
     }
     $filtered_params = array_filter($params, function ($key) {
-        return !strtolower($key)[["password" => true, "token" => true, "csrf" => true, "api_key" => true]];
+        // Use in_array to check if the key exists in the array of sensitive keys
+        return !in_array(strtolower($key), ["password", "token", "csrf", "api_key"]);
     }, ARRAY_FILTER_USE_KEY);
+    
     $total_logs = $CMSNT->get_row("SELECT COUNT(*) as total FROM `admin_request_logs`")["total"];
     $max_logs = 10000;
     if($max_logs <= $total_logs) {
