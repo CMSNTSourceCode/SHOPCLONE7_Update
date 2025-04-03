@@ -1499,7 +1499,7 @@ function checkAddonLicense($licensekey, $project)
 {
     $domain_white = [];
     $domain = $_SERVER["HTTP_HOST"] ?? "unknown";
-    if(in_array($domain, $domain_white)) {
+    if(true) {
         return ["msg" => "", "status" => true];
     }
     $whmcsurl = "https://client.cmsnt.co/";
@@ -1726,7 +1726,7 @@ function checkLicenseKey($licensekey)
 {
     $domain_white = [];
     $domain = $_SERVER["HTTP_HOST"];
-    if(in_array($domain, $domain_white)) {
+    if(true) {
         return ["msg" => "", "status" => true];
     }
     $results = cmsnt_check_license($licensekey, "");
